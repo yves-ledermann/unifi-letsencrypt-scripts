@@ -1,7 +1,7 @@
 #!/bin/bash
 
 domain=unifi.example.com
-renew_expire_date=30;
+renew_expire_date=15;
 
 le_path="/etc/letsencrypt"
 cert_file="/etc/letsencrypt/live/$domain/fullchain.pem"
@@ -35,7 +35,7 @@ printf "[DEBUG] Expires at: $exp\n"
 datenow=$(date -d "now" +%s)
 printf "[DEBUG] Current date: $datenow\n"
 
-days_exp=$(echo \( $exp - $datenow \) / 86400 |bc)
+days_exp=$(echo \($exp - $datenow\) / 86400 | bc)
 printf "[DEBUG] Days until expiration: $days_exp\n\n"
 
 printf "[INFO] Checking if expiration date for $domain needs to be renewed\n"
